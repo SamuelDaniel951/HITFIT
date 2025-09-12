@@ -8,11 +8,31 @@
 import SwiftUI
 
 struct HistoryView: View {
+    let history = HistoryStore()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("History")
+                .font(.title)
+                .padding()
+
+            Form {
+                ForEach(history.exerciseDays) { day in
+                    Section(
+                        header:
+                            Text(day.date.formatted(as: "MMM d"))
+                                .font(.headline)
+                    ) {
+                        ForEach(day.exercises, id: \.self) { exercise in
+                            Text(exercise)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
-#Preview {
-    HistoryView()
-}
+#Preview { HistoryView() }
+
+

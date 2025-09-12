@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -15,15 +16,12 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             TabView {
                 TabView {
-                    Text("Welcome")
-                     Text("Exercise 1")
-                     Text("Exercise 2")
-            
-                    
+                  WelcomeView()   // was Text("Welcome")
+                    ForEach(Exercise.exercises.indices, id: \.self) { index in
+                      ExerciseView(index: index)
+                    }
                 }
-                .tabViewStyle(PageTabViewStyle())
-                    .indexViewStyle(
-                        PageIndexViewStyle(backgroundDisplayMode: .always))
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             }
         }
        
