@@ -11,20 +11,26 @@ struct HistoryView: View {
     let history = HistoryStore()
 
     var body: some View {
-        VStack {
-            Text("History")
+        ZStack(alignment: .topTrailing) {            Button(action: {}) {
+            Image(systemName: "xmark.circle")
                 .font(.title)
-                .padding()
+                .padding(.trailing)
+          }
+            VStack {
+                Text("History")
+                    .font(.title)
+                    .padding()
 
-            Form {
-                ForEach(history.exerciseDays) { day in
-                    Section(
-                        header:
-                            Text(day.date.formatted(as: "MMM d"))
-                                .font(.headline)
-                    ) {
-                        ForEach(day.exercises, id: \.self) { exercise in
-                            Text(exercise)
+                Form {
+                    ForEach(history.exerciseDays) { day in
+                        Section(
+                            header:
+                                Text(day.date.formatted(as: "MMM d"))
+                                    .font(.headline)
+                        ) {
+                            ForEach(day.exercises, id: \.self) { exercise in
+                                Text(exercise)
+                            }
                         }
                     }
                 }
