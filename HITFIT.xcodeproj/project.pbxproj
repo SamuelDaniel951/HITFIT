@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7A2E0DD2E875DF600C48D2B /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E0DC2E875DF600C48D2B /* TimerView.swift */; };
 		B7A996EC2E7D98D4007FCA00 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A996EB2E7D98D4007FCA00 /* ImageExtension.swift */; };
 		B7A996EE2E7D9D0C007FCA00 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A996ED2E7D9D0C007FCA00 /* SuccessView.swift */; };
 		EB2B31E32E6CD52B00EFB152 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2B31E22E6CD52B00EFB152 /* DateExtension.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B7A2E0DC2E875DF600C48D2B /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		B7A996EB2E7D98D4007FCA00 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		B7A996ED2E7D9D0C007FCA00 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		EB2B31E22E6CD52B00EFB152 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				EB6FAB252E62D2E20016DD05 /* ContentView.swift */,
 				EB982DAF2E63D5C9007799E9 /* ExerciseView.swift */,
 				EBCF24AF2E652DCE00D8CD8E /* RatingView.swift */,
+				B7A2E0DC2E875DF600C48D2B /* TimerView.swift */,
 				B7A996ED2E7D9D0C007FCA00 /* SuccessView.swift */,
 				EB98435B2E6B882500098C82 /* HistoryView.swift */,
 				EB982DB22E63E96F007799E9 /* HeaderView.swift */,
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A2E0DD2E875DF600C48D2B /* TimerView.swift in Sources */,
 				EB2B31E92E6CD78F00EFB152 /* HistoryStoreDevData.swift in Sources */,
 				EB982DB32E63E96F007799E9 /* HeaderView.swift in Sources */,
 				EB98435C2E6B882500098C82 /* HistoryView.swift in Sources */,
