@@ -56,24 +56,31 @@ struct ExerciseView: View {
                       .foregroundColor(.red)
                     
                 } 
-                if showTimer {
-                TimerView(
-                timerDone: $timerDone,
-                size: geometry.size.height * 0.07
-                )
-                }
                 HStack(spacing: 150) {
-                startButton
-                doneButton
+                  startButton
+                  doneButton
                         .disabled(!timerDone)
+                        .sheet(isPresented: $showSuccess) {
+                          SuccessView(selectedTab: $selectedTab)
+                            .presentationDetents([.medium, .large])
                 }
-                .sheet(isPresented: $showSuccess) {
-                    SuccessView(selectedTab: $selectedTab)                }
+                
+                
+                }
                 .font(.title3)
                 .padding()
-                RatingView(rating: $rating)
-                    .padding()
+
+                if showTimer {
+                  TimerView(
+                    timerDone: $timerDone,
+                    size: geometry.size.height * 0.07
+                  )
+                }
+
                 Spacer()
+                RatingView(rating: $rating) // Move RatingView below Spacer
+                  .padding()
+
                 Button("History") {
                 showHistory.toggle()
                 }
