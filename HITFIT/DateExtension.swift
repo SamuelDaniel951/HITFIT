@@ -8,6 +8,10 @@
 import Foundation
 
 extension Date {
+    func isSameDay(as other: Date) -> Bool {
+        Calendar.current.isDate(self, inSameDayAs: other)
+    }
+
     func formatted(as format: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
