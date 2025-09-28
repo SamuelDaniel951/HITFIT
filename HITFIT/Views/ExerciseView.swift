@@ -12,7 +12,6 @@ struct ExerciseView: View {
     @EnvironmentObject var history: HistoryStore
     @State private var showSuccess = false
     @State private var showHistory = false
-    @State private var rating = 0
     @Binding var selectedTab: Int
     var lastExercise: Bool {
     index + 1 == Exercise.exercises.count
@@ -80,8 +79,8 @@ struct ExerciseView: View {
                 }
 
                 Spacer()
-                RatingView(rating: $rating) // Move RatingView below Spacer
-                  .padding()
+                RatingView(exerciseIndex: index)
+                .padding()
 
                 Button("History") {
                 showHistory.toggle()
