@@ -19,7 +19,7 @@ struct ContentView: View {
     .tag(index) // 3
     }
     }
-    .environmentObject(HistoryStore())
+
     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     .onAppear {
     print(URL.documentsDirectory)
@@ -33,5 +33,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
 static var previews: some View {
 ContentView()
+        .environmentObject(HistoryStore())
 }
 }
