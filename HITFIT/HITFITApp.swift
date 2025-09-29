@@ -13,6 +13,7 @@ struct HITFITApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                
                 .environmentObject(historyStore)
                 .alert(
                     // 1
