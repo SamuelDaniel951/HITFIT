@@ -7,6 +7,9 @@
 import Foundation
 
 struct ExerciseDay: Identifiable {
+    var uniqueExercises: [String] {
+    Array(Set(exercises)).sorted(by: <)
+    }
   let id = UUID()
   let date: Date
   var exercises: [String] = []
