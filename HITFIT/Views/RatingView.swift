@@ -14,7 +14,7 @@ struct RatingView: View {
     @State private var rating = 0   // 1
 
     let maximumRating = 5           // 2
-    let onColor = Color.red         // 3
+    let onColor = Color("ratings")        // 3
     let offColor = Color.gray
 
     // MARK: - Initializer
@@ -59,17 +59,21 @@ struct RatingView: View {
     var body: some View {
         HStack {
             ForEach(1 ..< maximumRating + 1, id: \.self) { index in
+                Button(action: {
+                updateRating(index: index)
+                }, label: {
                 Image(systemName: "waveform.path.ecg")
-                    .foregroundColor(index > rating ? offColor : onColor) // 4
-                    .font(.largeTitle)
-                    .onTapGesture {                                     // 5
-                        updateRating(index: index)
-                    }
-                    .onChange(of: ratings) {
-                    convertRating()
-                    }
-                    .onAppear {                                          convertRating()
-                    }
+                .foregroundStyle(
+                index > rating ? offColor : onColor)
+                .font(.body)
+                })
+                .buttonStyle(EmbossedButtonStyle(buttonShape: .circle))
+                .onChange(of: ratings) {
+                convertRating()
+                }
+                .onAppear {
+                convertRating()
+                }
             }
         }
     }

@@ -2,17 +2,42 @@
 //  ContainerView.swift
 //  HITFIT
 //
-//  Created by Madiha Ibrahim on 9/29/25.
-//
 
 import SwiftUI
 
-struct ContainerView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct ContainerView<Content: View>: View {
+    // store the view content
+    let content: Content
+
+    // initializer
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
     }
+
+    // body uses the stored content
+    var body: some View {
+    ZStack {
+        RoundedRectangle(cornerRadius: 25.0)
+            .foregroundStyle(Color.background)
+    VStack {
+        Spacer()
+    Rectangle()
+        .frame(height: 25)
+        .foregroundStyle(Color.background)
+        }
+        content
+        }
+        }
 }
 
-#Preview {
-    ContainerView()
+#Preview(traits: .sizeThatFitsLayout) {
+    ContainerView {
+        VStack {
+            RaisedButton(buttonText: "Hello World") {}
+                .padding(50)
+            Button("Tap me!") {}
+                .buttonStyle(EmbossedButtonStyle(buttonShape: .circle))
+        }
+    }
+    .padding(50)
 }

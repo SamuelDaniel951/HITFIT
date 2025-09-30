@@ -2,54 +2,74 @@
 //  WelcomeView.swift
 //  HITFIT
 //
-//  Created by Owner on 8/30/25.
-//
 
 import SwiftUI
 
 struct WelcomeView: View {
+    var historyButton: some View {
+        Button(
+            action: { showHistory = true },
+            label: {
+                Text("History")
+                    .fontWeight(.bold)
+                    .padding([.leading, .trailing], 5)
+            }
+        )
+        .padding(.bottom, 10)
+        .buttonStyle(EmbossedButtonStyle())
+    }
+
+    // State for presenting history sheet
     @State private var showHistory = false
+
+    // Selected tab binding from parent
     @Binding var selectedTab: Int
+
+    // Get Started button as a reusable view
+    var getStartedButton: some View {
+        RaisedButton(buttonText: "Get Started") {
+            selectedTab = 0
+        }
+        .padding()
+    }
+
     var body: some View {
-        ZStack {
-            VStack {
-                HStack (alignment: .bottom) {
-                    VStack(alignment: .leading) {
-                        Text("Get fit")
-                            .font(.largeTitle)
-                        Text("with high intensity interval training")
-                            .font(.headline)
+        VStack {
+            HeaderView(
+                selectedTab: $selectedTab,
+                titleText: "Welcome"
+            )
+            // 20% height
+            .containerRelativeFrame(.vertical) { length, _ in
+                length * 0.2
+            }
+
+            // container view
+            ContainerView {
+                ViewThatFits {
+                    VStack {
+                        WelcomeView.images
+                        WelcomeView.welcomeText
+                        getStartedButton
+                        Spacer()
+                        historyButton
                     }
-                    Image("step-up.png")
-                        .resizable()
-//                        .aspectRatio(contentMode: .fill)
-//                        .frame(width: 240.0, height: 240.0)
-//                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                        .resizedToFill(width: 240, height: 240)
-                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    
+                    VStack {
+                        WelcomeView.welcomeText
+                        getStartedButton
+                        Spacer()
+                        historyButton
+                    }
                 }
             }
-            VStack {
-                HeaderView(selectedTab: $selectedTab, titleText: "Welcome")
-                Spacer()
-                
-                Button(action: { selectedTab = 0 }) {                Text("Get Started")
-                Image(systemName: "arrow.right.circle")
-                    
-                }
-                .font(.title2)
-                .padding()
-                .background(
-                RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.gray, lineWidth: 2))
-                Button("History") {
-                showHistory.toggle()
-                }
-                .sheet(isPresented: $showHistory) {
-                HistoryView(showHistory: $showHistory)
-                }
+
+            // 80% height
+            .containerRelativeFrame(.vertical) { length, _ in
+                length * 0.8
             }
+        }
+        .sheet(isPresented: $showHistory) {
+            HistoryView(showHistory: $showHistory)
         }
     }
 }

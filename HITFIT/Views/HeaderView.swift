@@ -9,13 +9,21 @@ struct HeaderView: View {
             Text(titleText)
                 .font(.largeTitle)
 
-            HStack {
+            HStack(spacing: 10) {                        // challenge
                 ForEach(Exercise.exercises.indices, id: \.self) { index in
-                    let fill = index == selectedTab ? ".fill" : ""
-                    Image(systemName: "\(index + 1).circle\(fill)")
-                        .onTapGesture {
-                        selectedTab = index
+                    ZStack {
+                        if index == selectedTab {         // challenge
+                            Circle()
+                                .fill(.white)
+                                .opacity(0.20)
+                                .frame(width: 22, height: 22)
                         }
+                        Circle()                          // challenge
+                            .fill(.white)
+                            .opacity(index == selectedTab ? 1.0 : 0.55)
+                            .frame(width: 8, height: 8)
+                    }
+                    .onTapGesture { selectedTab = index }
                 }
             }
             .font(.title2)
